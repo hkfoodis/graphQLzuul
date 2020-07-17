@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -21,6 +22,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 @SpringBootApplication
 @EnableEurekaClient
+@Import(TomcatWebServerCustomizer.class)
 @EnableAutoConfiguration(exclude = { //  
         DataSourceAutoConfiguration.class, //
         DataSourceTransactionManagerAutoConfiguration.class, //
