@@ -1,5 +1,6 @@
 package org.zerock.shoppingcart.service;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,6 +11,7 @@ import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 import org.zerock.shoppingcart.domain.Product;
 import org.zerock.shoppingcart.repository.ProductRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,7 +27,11 @@ public class ProductService {
 	
 	@GraphQLQuery(name = "products")
 	public List<Product> getProducts() {
-		return productRepository.findAll();
+		List<Product> result = new ArrayList<>();
+		
+		result = productRepository.findAll();
+		
+		return result;
 	}
 	@GraphQLQuery(name = "product")
 	public Product findProduct(String code) {
